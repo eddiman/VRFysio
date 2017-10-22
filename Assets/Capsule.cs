@@ -7,12 +7,9 @@ using UnityEngine.UI;
 public class Capsule : MonoBehaviour {
 
     private float timer;
-
     public float gazeTime = 1f;
 
     public bool gazedAt;
-
-    public GameObject textgameobject;
 
     Text TextRemainingLeft;
 
@@ -33,10 +30,11 @@ public class Capsule : MonoBehaviour {
             if (timer >= gazeTime)
             {
                 ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
-                timer = 0f; 
+                timer = 0f;
+                Debug.Log(TextRemainingLeft);
 
-                
-               
+
+
 
             }
         }
@@ -55,9 +53,7 @@ public class Capsule : MonoBehaviour {
         switch (GetComponent<Capsule>().name)
         {
             case "LeftComp":
-        TextRemainingLeft.text = "DAYUM";
-
-                
+        //TextRemainingLeft.text = "DAYUM";
 
                 break;
 
