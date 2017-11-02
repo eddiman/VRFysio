@@ -71,7 +71,7 @@ public class Timer : MonoBehaviour {
         text.text = "Hold for " + originalTimeLeft.ToString() + " seconds";
         if (finished)
         {
-                text.text = "You did it!";
+                text.text = "You did it! Go back to the center!";
 
         }
 
