@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class rotation : MonoBehaviour {
 
-    public float speed = 0.1f;
+    public float speed = 0.3f;
 
 
     void Start()

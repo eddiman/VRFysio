@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class Capsule : MonoBehaviour {
 
     private float timer;
+
     public float gazeTime = 1f;
 
     public bool gazedAt;
+
+    public GameObject textgameobject;
 
     Text TextRemainingLeft;
 
@@ -31,10 +34,7 @@ public class Capsule : MonoBehaviour {
             {
                 ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
                 timer = 0f;
-                Debug.Log(TextRemainingLeft);
-
-
-
+                Debug.Log("Timer is 0");
 
             }
         }
@@ -42,39 +42,60 @@ public class Capsule : MonoBehaviour {
 
     public void PointerEnter()
     {
-        //Debug.Log("Enet");
+        Debug.Log("Enter");
         gazedAt = true;
 
     }
     public void PointerClick()
     {
-        GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
 
         switch (GetComponent<Capsule>().name)
         {
             case "LeftComp":
-        //TextRemainingLeft.text = "DAYUM";
+                GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
+
+                GetComponent<Collider>().enabled = false;
+                gazedAt = false;
 
                 break;
+
+            case "RightComp":
+                GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
+
+                GetComponent<Collider>().enabled = false;
+                gazedAt = false;
+
+                break;
+
+            case "TopComp":
+                GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
+
+                GetComponent<Collider>().enabled = false;
+                gazedAt = false;
+
+                break;
+            default:
+                    GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
+
+                    GetComponent<Collider>().enabled = false;
+                    gazedAt = false;
+                    break;
+
 
         }
 
 
         //Sets the comp to be false, cannot interact ith it anymore
-        GetComponent<Collider>().enabled = false;
+        
         gazedAt = false;
 
     }
 
     public void PointerExit() { 
-            gazedAt = false;
-
+        gazedAt = false;
+        timer = 0;
     }
+      
 
-    public void PointerDown()
-    {
-        Debug.Log("POINTER DOWN");
-
-    }
 
 }
