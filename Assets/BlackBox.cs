@@ -21,17 +21,17 @@ public class BlackBox : MonoBehaviour {
 
         if (Manager.leftDone && Manager.rightDone && !Manager.topDone)
         {
-            midStarterText.text = "Move your along the elements on the top.";
+            midStarterText.text = "Move your head along the elements on the top.";
         }
 
         if (Manager.leftDone && !Manager.rightDone && !Manager.topDone)
         {
-            midStarterText.text = "Move your along the elements to the right.";
+            midStarterText.text = "Move your head along the elements to the right.";
         }
 
         if (Manager.leftDone && Manager.rightDone && !Manager.topDone)
         {
-            midStarterText.text = "Move your along the elements on the top.";
+            midStarterText.text = "Move your head along the elements on the top.";
         }
 
 
