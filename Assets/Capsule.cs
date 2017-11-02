@@ -14,14 +14,19 @@ public class Capsule : MonoBehaviour {
 
     public GameObject textgameobject;
 
+
+
     Text TextRemainingLeft;
 
     Capsule LeftComp;
 
+
 	// Use this for initialization
 	void Start () {
+        
 
         TextRemainingLeft = GetComponent<Text>();
+
     }
 
     // Update is called once per frame
@@ -34,7 +39,13 @@ public class Capsule : MonoBehaviour {
             {
                 ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
                 timer = 0f;
-                Debug.Log("Timer is 0");
+
+
+            }
+
+            if (Manager.leftFinished) {
+                setComponentToFinished(GetComponent<Capsule>());
+                Debug.Log("Left is finished");
 
             }
         }
@@ -42,7 +53,7 @@ public class Capsule : MonoBehaviour {
 
     public void PointerEnter()
     {
-        Debug.Log("Enter");
+
         gazedAt = true;
 
     }
@@ -52,43 +63,44 @@ public class Capsule : MonoBehaviour {
         switch (GetComponent<Capsule>().name)
         {
             case "LeftComp":
-                GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
-
-                GetComponent<Collider>().enabled = false;
-                gazedAt = false;
+                Manager.leftFinished = true;
 
                 break;
 
             case "RightComp":
-                GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
-
-                GetComponent<Collider>().enabled = false;
-                gazedAt = false;
+                setComponentToFinished(GetComponent<Capsule>());
 
                 break;
 
             case "TopComp":
-                GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
-
-                GetComponent<Collider>().enabled = false;
-                gazedAt = false;
+                setComponentToFinished(GetComponent<Capsule>());
 
                 break;
             default:
-                    GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
 
-                    GetComponent<Collider>().enabled = false;
-                    gazedAt = false;
+                
+                setComponentToFinished(GetComponent<Capsule>());
+
                     break;
 
 
         }
 
 
+
+
         //Sets the comp to be false, cannot interact ith it anymore
         
         gazedAt = false;
 
+    }
+
+    public void setComponentToFinished(Component component)
+    {
+        
+        component.GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
+
+        component.GetComponent<Collider>().enabled = false;
     }
 
     public void PointerExit() { 
@@ -99,3 +111,5 @@ public class Capsule : MonoBehaviour {
 
 
 }
+
+

@@ -33,7 +33,7 @@ public class Timer : MonoBehaviour {
 
             if(timeLeft <= 0)
             {
-                Debug.Log("Time is up");
+
                 isOnPoint = false;
                 finished = true;
                 
@@ -47,7 +47,7 @@ public class Timer : MonoBehaviour {
         if (!isOnPoint)
         {
             isOnPoint = true;
-            Debug.Log("startTimer()");
+
         }
     }
 
@@ -55,7 +55,7 @@ public class Timer : MonoBehaviour {
     {
         if (!isOnPoint)
         {
-            Debug.Log("setTimer()");
+
             originalTimeLeft = timer;
             timeLeft = timer;
         }
