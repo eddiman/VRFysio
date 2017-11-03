@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class rotation : MonoBehaviour {
 
-    public float speed = 16f;
+    public float speed = 0.4f;
 
 
     void Start()
@@ -18,6 +18,6 @@ public class rotation : MonoBehaviour {
 
     void Update()
     {
-        transform.RotateAround(Vector3.zero, Vector3.up, 0.4f * Time.deltaTime);
+        transform.RotateAround(Vector3.zero, Vector3.up, speed * Time.deltaTime);
     }
 }
