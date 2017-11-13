@@ -45,16 +45,17 @@ public class MenuBehavior : MonoBehaviour {
                     timerText.text = "Reset in " + timerString;
                     break;
 
-                case "StartButton":
+                default:
                     timerText.text = "Starting in " + timerString;
                     break;
+
             }
 
             if (timer >= gazeTime)
             {
                 ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
                 timer = 0f;
-                Debug.Log("Timer is 0");
+                Debug.Log("TextTimer is 0");
                 
 
 
@@ -69,39 +70,45 @@ public class MenuBehavior : MonoBehaviour {
     {
         Debug.Log("Enter");
         gazedAt = true;
-        switch (GetComponent<Text>().name)
-        {
-            case "ResetButton":
-                GetComponent<Text>().color = new Color(0.5f, 0.5f, 0.5f);
-                break;
+        GetComponent<Text>().color = new Color(0.5f, 0.5f, 0.5f);
 
-            case "StartButton":
-                GetComponent<Text>().color = new Color(0.5f, 0.5f, 0.5f);
-                break;
-        }
 
     }
 
     public void PointerClick()
     {
+
+        txt.color = new Color(1f, 1f, 1f);
+
         switch (GetComponent<Text>().name)
         {
             case "ResetButton":
-                txt.color = new Color(1f, 1f, 1f);
                 timerText.text = "Resetting...";
                 Application.LoadLevel(Application.loadedLevel);
 
-                Manager.leftDone = false;
-                Manager.rightDone = false;
-                Manager.topDone = false;
+                Manager.resetAll();
 
                 break;
 
             case "StartButton":
-                txt.color = new Color(1f, 1f, 1f);
-                timerText.text = "Starting...";
+                timerText.text = "Loading...";
                 SceneManager.LoadScene("test_scene");
-                SceneManager.UnloadScene("menu_scene");
+                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+                break;
+            case "StartMenuButton":
+
+                timerText.text = "Loading...";
+                SceneManager.LoadScene("menu_scene");
+                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+                Manager.resetAll();
+            
+                break;
+
+            case "NextSceneButton":
+
+                timerText.text = "Loading...";
+                SceneManager.LoadScene("test_scene_2");
+                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
                 break;
         }
 
@@ -114,18 +121,9 @@ public class MenuBehavior : MonoBehaviour {
 
     public void PointerExit()
     {
-        switch (GetComponent<Text>().name)
-        {
-            case "ResetButton":
                 GetComponent<Text>().color = new Color(1f, 1f, 1f);
                 timerText.text = "";
-                break;
-
-            case "StartButton":
-                GetComponent<Text>().color = new Color(1f, 1f, 1f);
-                timerText.text = "";
-                break;
-        }
+             
         //Resets variables
         gazedAt = false;
         timer = 0;

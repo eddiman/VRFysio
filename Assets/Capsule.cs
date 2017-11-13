@@ -118,7 +118,7 @@ public class Capsule : MonoBehaviour {
     {
                 Debug.Log(component.name + " finished");
 
-        component.GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
+        component.GetComponent<Renderer>().material.color = Color.green;
 
         component.GetComponent<Collider>().enabled = false;
         timer = 0;
