@@ -94,6 +94,7 @@ public class MenuBehavior : MonoBehaviour {
                 timerText.text = "Loading...";
                 SceneManager.LoadScene("test_scene");
                 SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+                Manager.resetAll();
                 break;
             case "StartMenuButton":
 

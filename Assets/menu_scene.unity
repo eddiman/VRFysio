@@ -1909,7 +1909,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: To start, point the white reticle in the middle of your view onto the "Start"-button
+  m_Text: To start, point the white dot in the middle of your view onto the "Start"-button
 --- !u!222 &1417195751
 CanvasRenderer:
   m_ObjectHideFlags: 0

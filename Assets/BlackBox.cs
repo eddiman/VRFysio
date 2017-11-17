@@ -44,7 +44,7 @@ public class BlackBox : MonoBehaviour {
 	    /*^TILT^*/
 
 
-        if (Manager.leftDone && Manager.rightDone && Manager.topDone)
+        if (Manager.leftDone && Manager.rightDone && Manager.topDone && SceneManager.GetActiveScene().name == "test_scene")
         {
             midStarterText.text = "All of them are now done! \n Select 'Next Scene' under you for the next exercise.";
         }
